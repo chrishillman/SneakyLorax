@@ -1,0 +1,41 @@
+include includehead.pug
+
+script.
+    $(document).ready(function(){
+        $('.dropdown').dropdown();
+        $('.checkbox').checkbox();
+        $('.accordion').accordion();
+        $('.modal').modal();
+        updatepreferences();
+    });
+
+include includenav.pug
+
+.ui.container
+    if message
+        .ui.positive.message
+            i.close.icon
+            .header
+                a.item(href=message[1])
+                    button.positive.fluid.ui.button.export= message[0]
+    .ui.form
+        form(action="{{url_for('user_preferences')}}", method="post")
+            {{userpreferencesform.hidden_tag()}}
+            .field
+                {{userpreferencesform.fgcolor.label(class="userpref")}}{{userpreferencesform.fgcolor(class="ui fluid selection dropdown")}}
+            .field
+                {{userpreferencesform.bgcolor.label(class="userpref")}}{{userpreferencesform.bgcolor(class="ui fluid selection dropdown")}}
+            .field
+                {{userpreferencesform.menufgcolor.label(class="userpref")}}{{userpreferencesform.menufgcolor(class="ui fluid selection dropdown")}}
+            .field
+                {{userpreferencesform.menubgcolor.label(class="userpref")}}{{userpreferencesform.menubgcolor(class="ui fluid selection dropdown")}}
+            .field
+                button#testsettings.fluid.ui.button.menuuserpref(value="Test Settings") Test Settings
+            .field
+                button#revertsettings.fluid.ui.button.menuuserpref(value="Revert Settings") Revert Settings
+            .field
+                button.ui.right.labeled.icon.button.fluid.menuuserpref(type="submit", value="Reset Password") Reset Password
+                    i.icon.sign.in.alternate
+
+
+include includefoot.pug
