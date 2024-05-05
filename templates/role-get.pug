@@ -1,0 +1,35 @@
+include includehead.pug
+
+script.
+    $(document).ready(function(){
+        $('.dropdown').dropdown();
+        $('.checkbox').checkbox();
+        $('.accordion').accordion();
+        $('.modal').modal();
+    });
+
+include includenav.pug
+
+.ui.container
+    .ui.items
+        a.item(href='/role-add.html')
+            button.fluid.ui.button.export New Role
+        table.ui.striped.table#allroles
+            thead
+                tr
+                    th
+                    th Role Name
+                    th Role Description
+                    th Role Permissions
+            tbody
+            each thisrole in allroles
+                tr
+                    td
+                        a.ui.icon.button(href='/role-edit.html?roleid={{thisrole.id}}', data-content='Edit Role')
+                            i.pen.square.icon
+                    td= thisrole.name
+                    td= thisrole.description
+                    td= thisrole.permissions
+
+
+include includefoot.pug

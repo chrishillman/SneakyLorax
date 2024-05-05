@@ -1,0 +1,32 @@
+include includehead.pug
+
+script.
+    $(document).ready(function(){
+        $('.dropdown').dropdown();
+        $('.checkbox').checkbox();
+        $('.accordion').accordion();
+        $('.modal').modal();
+    });
+
+include includenav.pug
+
+.ui.container
+    if message
+        .ui.positive.message
+            i.close.icon
+            .header
+                {{message}}
+    .ui.form
+        form(action=url, method="post")
+            {{roleform.hidden_tag()}}
+            .field
+                {{roleform.name.label}}{{roleform.name(class="id fluid input")}}
+            .field
+                {{roleform.description.label}}{{roleform.description(class="id fluid dropdown")}}
+            .field
+                {{roleform.permissions.label}}{{roleform.permissions(class="ui fluid input")}}
+            .field
+                button.ui.right.labeled.icon.button.fluid(type="submit", value="Save Changes") Save Changes
+
+
+include includefoot.pug

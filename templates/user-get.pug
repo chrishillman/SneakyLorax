@@ -1,0 +1,35 @@
+include includehead.pug
+
+script.
+    $(document).ready(function(){
+        $('.dropdown').dropdown();
+        $('.checkbox').checkbox();
+        $('.accordion').accordion();
+        $('.modal').modal();
+    });
+
+include includenav.pug
+
+.ui.container
+    .ui.items
+        a.item(href='/user-add.html')
+            button.fluid.ui.button.export New User
+        table.ui.striped.table#allusers
+            thead
+                tr
+                    th
+                    th User Name
+                    th User Active
+                    th User Role
+            tbody
+            each thisuser in allusers
+                tr
+                    td
+                        a.ui.icon.button(href='/user-edit.html?userid={{thisuser.id}}', data-content='Edit User')
+                            i.pen.square.icon
+                    td= thisuser.username
+                    td= thisuser.active
+                    td= thisuser.roleid.name
+
+
+include includefoot.pug

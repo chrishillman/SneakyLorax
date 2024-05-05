@@ -1,0 +1,37 @@
+include includehead.pug
+
+script.
+    var darkmode = new Darkmode();
+    $(document).ready(function(){
+        $('.dropdown').dropdown();
+        $('.checkbox').checkbox();
+        $('.accordion').accordion();
+        $('.modal').modal();
+        $('table').DataTable();
+    };
+
+include includenav.pug
+
+.ui.container
+    .ui.items
+        a.item(href='/adminupdateprojecttype.html')
+            button.fluid.ui.button.export New Project Type
+        table.ui.striped.table#allprojecttypes
+            thead
+                tr
+                    th
+                    th Project Type
+                    th Engagement Letter Name
+            tbody
+                each projecttype in allprojecttypes
+                    tr
+                        td
+                            a.ui.icon.button(href='/adminupdateprojecttype.html?projecttypeid={{projecttype.id}}', data-content='Edit Project Type')
+                                i.pen.square.icon
+                            a.ui.icon.button(href='/adminupdateengagementletter.html?engagementletterid={{projecttype.engagementletter_id}}', data-content='Edit Engagement Letter')
+                                i.envelope.icon
+                        td= projecttype.typename
+                        td= projecttype.engagementletter.engagementlettername
+
+
+include includefoot.pug

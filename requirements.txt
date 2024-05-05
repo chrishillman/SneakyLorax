@@ -1,0 +1,13 @@
+flask
+flask-wtf
+flask-login
+flask-admin
+peewee
+wtf-peewee
+wtforms
+wheel
+pypugjs
+waitress
+bcrypt==4.0.1
+passlib[bcrypt]
+

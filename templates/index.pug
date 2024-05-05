@@ -1,0 +1,22 @@
+include includehead.pug
+
+script.
+    $(document).ready(function(){
+        $('.dropdown').dropdown();
+        $('.checkbox').checkbox();
+        $('.accordion').accordion();
+        $('.modal').modal();
+    });
+
+include includenav.pug
+
+.ui.container
+    .ui.items
+
+        a.item(href='/user-get.html')
+            button.fluid.ui.button.export Add / Edit Users
+        a.item(href='/role-get.html')
+            button.fluid.ui.button.export Add / Edit Roles
+
+
+include includefoot.pug

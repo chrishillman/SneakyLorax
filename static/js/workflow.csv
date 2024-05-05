@@ -1,0 +1,9 @@
+source,target,value
+Intake,Vetting,1
+Vetting,Assignment,1
+Assignment,Docs,1
+Docs,Prep,1
+Docs,Review,1
+Prep,Review,1
+Review,Submit,1
+Submit,Finished,1

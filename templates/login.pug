@@ -1,0 +1,26 @@
+include includehead.pug
+
+script.
+    $(document).ready(function(){
+        $('.dropdown').dropdown();
+        $('.checkbox').checkbox();
+        $('.accordion').accordion();
+        $('.modal').modal();
+    });
+
+include includenav.pug
+
+.ui.container
+    .ui.form
+        form(action="{{url_for('login')}}", method="post")
+            {{loginform.hidden_tag()}}
+            .field
+                {{loginform.username.label}}{{loginform.username(class="ui fluid input")}}
+            .field
+                {{loginform.password.label}}{{loginform.password(class="ui fluid input")}}
+            .field
+                button.ui.right.labeled.icon.button.fluid(type="submit", value="Log In") Log In
+                    i.icon.sign.in.alternate
+
+
+include includefoot.pug

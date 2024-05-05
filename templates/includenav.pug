@@ -1,0 +1,36 @@
+
+.ui.menu.bgORANGE.inverted 
+    .header.item 
+        a(href="/index.html")
+            i.home.icon 
+    .ui.dropdown.item Menu
+        i.dropdown.icon
+        .menu
+            .ui.dropdown.item
+                i.dropdown.icon
+                | Users
+                .menu
+                    .item
+                        a#user-get.fgBLACK(href='/user-get.html') All Users
+                    .item
+                        a#user-add.fgBLACK(href='/user-add.html') New User
+            .ui.dropdown.item
+                i.dropdown.icon
+                | Roles
+                .menu
+                    .item
+                        a#role-get.fgBLACK(href='/role-get.html') All Roles
+                    .item
+                        a#role-add.fgBLACK(href='/role-add.html') New Role
+
+    .right.menu
+        if current_user.email
+            .item
+                | Logged in as #{current_user.username}
+        .item
+            .ui.dropdown.item
+                i.bars.icon
+                .ui.menu
+                    a#darkmode.item.fgBLACK(onClick="darkmode.toggle();") Darkmode
+                    a#logout.item.fgBLACK(href="/logout.html") #[i.sign.out.alternate.icon] logout
+                    a#changepassword.item.fgBLACK(href="/resetpassword.html") Change Password
