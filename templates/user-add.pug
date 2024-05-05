@@ -6,6 +6,7 @@ script.
         $('.checkbox').checkbox();
         $('.accordion').accordion();
         $('.modal').modal();
+        updatepreferences();
     });
 
 include includenav.pug
@@ -15,21 +16,22 @@ include includenav.pug
         .ui.positive.message
             i.close.icon
             .header
-                {{message}}
+                a.item(href=message[1])
+                    button.positive.fluid.ui.button.export= message[0]
     .ui.form
         form(action=url, method="post")
             {{userform.hidden_tag()}}
             .field
-                {{userform.username.label}}{{userform.username(class="id fluid input")}}
+                {{userform.username.label(class="userpref")}}{{userform.username(class="id fluid input")}}
             .field
-                {{userform.roleid.label}}{{userform.roleid(class="id fluid dropdown")}}
+                {{userform.roleid.label(class="userpref")}}{{userform.roleid(class="id fluid dropdown")}}
             .field
                 .ui.toggle.checkbox
-                    {{userform.active.label}}{{userform.active(class='checkbox hidden')}}
+                    {{userform.active.label(class="userpref")}}{{userform.active(class='checkbox hidden')}}
             .field
-                {{userform.password.label}}{{userform.password(class="ui fluid input")}}
+                {{userform.password.label(class="userpref")}}{{userform.password(class="ui fluid input")}}
             .field
-                button.ui.right.labeled.icon.button.fluid(type="submit", value="Save Changes") Save Changes
+                button.ui.right.labeled.icon.button.fluid.menuuserpref(type="submit", value="Save Changes") Save Changes
 
 
 include includefoot.pug

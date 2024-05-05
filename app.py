@@ -18,10 +18,10 @@ from wtforms.fields.simple import HiddenField
 app = Flask(__name__)
 app.config['DEBUG'] = True
 # Generate a nice key using secrets.token_urlsafe()
-app.config['SECRET_KEY'] = "sdlkfjowrmnjwhrerjsdmkflskjeoighlkjsdflksdj"
+app.config['SECRET_KEY'] = "fhdnsjwjdmnxncdnsnhjazsxuhwyebydbehedjhdfjsgjfnbcenb"
 # Bcrypt is set as default SECURITY_PASSWORD_HASH, which requires a salt
 # Generate a good salt using: secrets.SystemRandom().getrandbits(128)
-password_salt = "ovpoeinakjsdhflkjnweiublrkjfnksjrfnfksdjhfwe"
+password_salt = "lrhlskjfngyaluwiemcnhfgokmjsuwzsdhftrje"
 app.config['SECURITY_PASSWORD_SALT'] = password_salt
 app.config['DATABASE'] = {
     'name': 'database.db',
@@ -143,7 +143,7 @@ def resetpassword():
         newpassword = hashme(passwordresetform.password.data)
         current_user.password = newpassword
         current_user.save()
-        message = "Password changed successfully"
+        message = ["Password changed successfully, click to return", "/index.html"]
     return render_template("resetpassword.pug", passwordresetform=passwordresetform, message=message)
 
 @app.route('/user-get.html')
@@ -180,10 +180,10 @@ def user_add():
                         thisuser.password = password
                     thisuser.active = active
                     thisuser.save()
-                    message = "User updated successfully"
+                    message = ["User updated successfully, click to return to all users", "/user-get.html"]
             else:
                 User.create(username=username, roleid=roleid, password=password, active=active)
-                message = "User added successfully"
+                message = ["User added successfully, click to return to all users", "/user-get.html"]
     if request.method == "GET" and edituser:
         thisuser = User.get_or_none(User.id == edituser)
         if thisuser:
@@ -220,10 +220,10 @@ def role_add():
                     thisrole.description = roledescription
                     thisrole.permissions = rolepermissions
                     thisrole.save()
-                    message = "Role updated successfully"
+                    message = ["Role updated successfully, click to return to all roles", "/role-get.html"]
             else:
                 Role.create(name=rolename, description=roledescription, permissions=rolepermissions)
-                message = "Role added successfully"
+                message = ["Role added successfully, click to return to all roles", "/role-get.html"]
     if request.method == "GET" and editrole:
         thisrole = Role.get_or_none(Role.id == editrole)
         if thisrole:

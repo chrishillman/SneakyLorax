@@ -7,4 +7,19 @@ head
     link(rel='stylesheet', href='/static/css/chart.css')
 body
     script(src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js")
+    script.
+        console.log("hello");
+        var k = "{{ current_user.username }}";
+        console.log(k);
+        {% if current_user.preferences %}
+        userpreferences={{current_user.preferences}};
+        {% else %}
+        userpreferences={menufgcolor:'fgWHITE', menubgcolor:'bgGRAY', fgcolor:'fgBLACK', bgcolor:'bgWHITE'};
+        {% endif %}
+        function updatepreferences() {
+            document.querySelectorAll('.menuuserpref').forEach(x => x.classList.add(userpreferences.menufgcolor));
+            document.querySelectorAll('.menuuserpref').forEach(x => x.classList.add(userpreferences.menubgcolor));
+            document.querySelectorAll('.userpref').forEach(x=>x.classList.add(userpreferences.fgcolor));
+            document.querySelectorAll('.userpref').forEach(x=>x.classList.add(userpreferences.bgcolor));
+        }
 

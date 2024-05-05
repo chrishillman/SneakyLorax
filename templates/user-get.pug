@@ -6,6 +6,8 @@ script.
         $('.checkbox').checkbox();
         $('.accordion').accordion();
         $('.modal').modal();
+        $('table.sortable').tablesorter();
+        updatepreferences();
     });
 
 include includenav.pug
@@ -13,8 +15,8 @@ include includenav.pug
 .ui.container
     .ui.items
         a.item(href='/user-add.html')
-            button.fluid.ui.button.export New User
-        table.ui.striped.table#allusers
+            button.fluid.ui.button.menuuserpref New User
+        table.ui.sortable.striped.table#allusers
             thead
                 tr
                     th
@@ -25,7 +27,7 @@ include includenav.pug
             each thisuser in allusers
                 tr
                     td
-                        a.ui.icon.button(href='/user-edit.html?userid={{thisuser.id}}', data-content='Edit User')
+                        a.ui.icon.button.menuuserpref(href='/user-edit.html?userid={{thisuser.id}}', data-content='Edit User')
                             i.pen.square.icon
                     td= thisuser.username
                     td= thisuser.active

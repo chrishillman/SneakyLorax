@@ -6,6 +6,8 @@ script.
         $('.checkbox').checkbox();
         $('.accordion').accordion();
         $('.modal').modal();
+        $('table.sortable').tablesorter();
+        updatepreferences();
     });
 
 include includenav.pug
@@ -13,8 +15,8 @@ include includenav.pug
 .ui.container
     .ui.items
         a.item(href='/role-add.html')
-            button.fluid.ui.button.export New Role
-        table.ui.striped.table#allroles
+            button.fluid.ui.button.menuuserpref New Role
+        table.ui.sortable.striped.table#allroles
             thead
                 tr
                     th
@@ -25,7 +27,7 @@ include includenav.pug
             each thisrole in allroles
                 tr
                     td
-                        a.ui.icon.button(href='/role-edit.html?roleid={{thisrole.id}}', data-content='Edit Role')
+                        a.ui.icon.button.menuuserpref(href='/role-edit.html?roleid={{thisrole.id}}', data-content='Edit Role')
                             i.pen.square.icon
                     td= thisrole.name
                     td= thisrole.description

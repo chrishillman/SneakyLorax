@@ -1,5 +1,5 @@
 
-.ui.menu.bgORANGE.inverted 
+.ui.menu.menuuserpref.inverted
     .header.item 
         a(href="/index.html")
             i.home.icon 
@@ -11,17 +11,17 @@
                 | Users
                 .menu
                     .item
-                        a#user-get.fgBLACK(href='/user-get.html') All Users
+                        a#user-get.userpref(href='/user-get.html') All Users
                     .item
-                        a#user-add.fgBLACK(href='/user-add.html') New User
+                        a#user-add.userpref(href='/user-add.html') New User
             .ui.dropdown.item
                 i.dropdown.icon
                 | Roles
                 .menu
                     .item
-                        a#role-get.fgBLACK(href='/role-get.html') All Roles
+                        a#role-get.userpref(href='/role-get.html') All Roles
                     .item
-                        a#role-add.fgBLACK(href='/role-add.html') New Role
+                        a#role-add.userpref(href='/role-add.html') New Role
 
     .right.menu
         if current_user.email
@@ -31,6 +31,6 @@
             .ui.dropdown.item
                 i.bars.icon
                 .ui.menu
-                    a#darkmode.item.fgBLACK(onClick="darkmode.toggle();") Darkmode
-                    a#logout.item.fgBLACK(href="/logout.html") #[i.sign.out.alternate.icon] logout
-                    a#changepassword.item.fgBLACK(href="/resetpassword.html") Change Password
+                    a#darkmode.item.userpref(onClick="darkmode.toggle();") Darkmode
+                    a#logout.item.userpref(href="/logout.html") #[i.sign.out.alternate.icon] logout
+                    a#changepassword.item.userpref(href="/resetpassword.html") Change Password

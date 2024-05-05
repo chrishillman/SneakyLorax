@@ -6,6 +6,7 @@ script.
         $('.checkbox').checkbox();
         $('.accordion').accordion();
         $('.modal').modal();
+        updatepreferences();
     });
 
 include includenav.pug
@@ -14,9 +15,9 @@ include includenav.pug
     .ui.items
 
         a.item(href='/user-get.html')
-            button.fluid.ui.button.export Add / Edit Users
+            button.fluid.ui.button.menuuserpref Add / Edit Users
         a.item(href='/role-get.html')
-            button.fluid.ui.button.export Add / Edit Roles
+            button.fluid.ui.button.menuuserpref Add / Edit Roles
 
 
 include includefoot.pug
