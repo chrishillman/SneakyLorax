@@ -1,2 +1,2 @@
-# CompetitionSoftware
-Software to manage Judged Competitions
+# SneakyLorax
+Flask with PeeWee and Pug web application.
