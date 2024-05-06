@@ -1,20 +1,20 @@
 
 .ui.menu.menuuserpref.inverted
-    .header.item 
+    .header.item.menuuserpref
         a(href="/index.html")
             i.home.icon 
-    .ui.dropdown.item Menu
+    .ui.dropdown.item.menuuserpref Menu
         i.dropdown.icon
         .menu
-            .ui.dropdown.item
+            .ui.dropdown.item.userpref
                 i.dropdown.icon
                 | Users
                 .menu
-                    .item
+                    .item.userpref
                         a#user-get.userpref(href='/user-get.html') All Users
-                    .item
+                    .item.userpref
                         a#user-add.userpref(href='/user-add.html') New User
-            .ui.dropdown.item
+            .ui.dropdown.item.userpref
                 i.dropdown.icon
                 | Roles
                 .menu
