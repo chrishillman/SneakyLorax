@@ -1,12 +1,39 @@
 include includehead.pug
 
 script.
+    function removecolorclasses(element){
+        $(".menuuserpref").removeClass(function (index, className) {
+            return (className.match(/(^|\s)bg\S+/g) || []).join(' ');
+        });
+        $(".menuuserpref").removeClass(function (index, className) {
+            return (className.match(/(^|\s)fg\S+/g) || []).join(' ');
+        });
+        $(".userpref").removeClass(function (index, className) {
+            return (className.match(/(^|\s)bg\S+/g) || []).join(' ');
+        });
+        $(".userpref").removeClass(function (index, className) {
+            return (className.match(/(^|\s)fg\S+/g) || []).join(' ');
+        });
+    }
+
     $(document).ready(function(){
         $('.dropdown').dropdown();
         $('.checkbox').checkbox();
         $('.accordion').accordion();
         $('.modal').modal();
         updatepreferences();
+        $('#testsettings').on('click', function(){
+            removecolorclasses();
+            document.querySelectorAll('.menuuserpref').forEach(x => x.classList.add( $('#menufgcolor').val() ));
+            document.querySelectorAll('.menuuserpref').forEach(x => x.classList.add( $('#menubgcolor').val() ));
+            document.querySelectorAll('.userpref').forEach(x => x.classList.add( $('#fgcolor').val() ));
+            document.querySelectorAll('.userpref').forEach(x => x.classList.add( $('#bgcolor') ));
+        });
+        $('#revertsettings').on('click', function(){
+            removecolorclasses();
+            updatepreferences();
+        });
+
     });
 
 include includenav.pug
@@ -30,11 +57,11 @@ include includenav.pug
             .field
                 {{userpreferencesform.menubgcolor.label(class="userpref")}}{{userpreferencesform.menubgcolor(class="ui fluid selection dropdown")}}
             .field
-                button#testsettings.fluid.ui.button.menuuserpref(value="Test Settings") Test Settings
+                a#testsettings.fluid.ui.button.menuuserpref Test Settings
             .field
-                button#revertsettings.fluid.ui.button.menuuserpref(value="Revert Settings") Revert Settings
+                a#revertsettings.fluid.ui.button.menuuserpref Revert Settings
             .field
-                button.ui.right.labeled.icon.button.fluid.menuuserpref(type="submit", value="Reset Password") Reset Password
+                button.ui.right.labeled.icon.button.fluid.menuuserpref(type="submit", value="Save Changes") Save Changes
                     i.icon.sign.in.alternate
 
 

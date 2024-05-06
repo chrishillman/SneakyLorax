@@ -197,6 +197,18 @@ def user_preferences():
         current_user.preferences = json.dumps(userpreferences)
         current_user.save()
         message = ["Preferences changed successfully, click to return", "/index.html"]
+    else:
+        if current_user.preferences:
+            userpreferences = json.loads(current_user.preferences)
+            userpreferencesform.fgcolor.data = userpreferences["fgcolor"]
+            userpreferencesform.bgcolor.data = userpreferences["bgcolor"]
+            userpreferencesform.menufgcolor.data = userpreferences["menufgcolor"]
+            userpreferencesform.menubgcolor.data = userpreferences["menubgcolor"]
+        else:
+            userpreferencesform.fgcolor.data = "fgBLACK"
+            userpreferencesform.bgcolor.data = "fgWHITE"
+            userpreferencesform.menufgcolor.data = "fgWHITE"
+            userpreferencesform.menubgcolor.data = "bgGRAY"
     return render_template("user-preferences.pug", userpreferencesform=userpreferencesform, message=message)
 
 
