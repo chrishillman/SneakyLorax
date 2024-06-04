@@ -8,6 +8,7 @@ from peewee import *
 from flask_login import LoginManager, login_required, current_user, login_user, logout_user
 import hashlib
 import json
+import os
 
 from colors import getcolors
 from forms import *
@@ -15,9 +16,18 @@ from models import *
 
 # Create app
 app = Flask(__name__)
-app.config['DEBUG'] = True
-app.config['SECRET_KEY'] = "fhdnsjwjdmnxncdnsnhjazsxuhwyebydbehedjhdfjsgjfnbcenb"
-password_salt = "lrhlskjfngyaluwiemcnhfgokmjsuwzsdhftrje"
+debugapp = False
+if 'DEBUG' in os.environ:
+    if os.environ['DEBUG'] == "TRUE":
+      debugapp = True
+app.config['DEBUG'] = debugapp
+secretkey = "pinoeruversklyghgewniooi8w45ugsdekylrghentriretioujghpertoihj"
+if 'SK' in os.environ:
+    secretkey = os.environ['SK']
+app.config['SECRET_KEY'] = secretkey
+password_salt = "lrhlskjfngyaluwiemcnhsoeirnudsfhjkglfgokmjsuwzsdhftrje"
+if 'SALT' in os.environ:
+    password_salt = os.environ['SALT']
 app.config['SECURITY_PASSWORD_SALT'] = password_salt
 app.config['DATABASE'] = {
     'name': 'database.db',
