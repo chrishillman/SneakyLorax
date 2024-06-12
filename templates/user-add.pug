@@ -21,6 +21,7 @@ include includenav.pug
     .ui.form
         form(action=url, method="post")
             {{userform.hidden_tag()}}
+            {{userform.id}}
             .field
                 {{userform.username.label(class="userpref")}}{{userform.username(class="id fluid input")}}
             .field

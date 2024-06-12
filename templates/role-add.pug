@@ -21,6 +21,7 @@ include includenav.pug
     .ui.form
         form(action=url, method="post")
             {{roleform.hidden_tag()}}
+            {{roleform.id}}
             .field
                 {{roleform.name.label(class="userpref")}}{{roleform.name(class="id fluid input")}}
             .field
